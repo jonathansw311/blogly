@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Bloggers</title>
+</head>
+<body>
+    <h1>All Users</h1>
+    <p><ul>
+        {% for blog in blogger %}
+        <li><a href="/bloggers/users/{{blog.id}}">{{blog.first_name}} {{blog.last_name}}</a></li>
+        {% endfor %}
+</ul>
+    </p>
+  <button > <a href="/bloggers/new"; style="text-decoration:none">Add New</a></button>
+</body>
+</html>
