@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Bloggers</title>
-</head>
-<body>
-    <h1>All Users</h1>
+{% extends 'base.html' %}
+{% block title%}User List{% endblock %}
+{% block content %}
+<div class="container">    
+<h1>All Users</h1>
     <p><ul>
         {% for blog in blogger %}
-        <li><a href="/bloggers/users/{{blog.id}}">{{blog.first_name}} {{blog.last_name}}</a></li>
+        <li><a href="/bloggers/{{blog.id}}">{{blog.first_name}} {{blog.last_name}}</a></li>
         {% endfor %}
 </ul>
     </p>
-  <button > <a href="/bloggers/new"; style="text-decoration:none">Add New</a></button>
-</body>
-</html>
+    <a href="/bloggers/new"><button type="button" class="btn btn-primary"> Add New</button></a>
+</div>
+
+<div class="container m-3">
+    <h2> Last five posts</h2>
+    <ul>
+    {% for post in posts%}
+    <li>   {{post.content}} -by {{post.blogger.first_name}} {{post.blogger.last_name}} {% for po in post.tags %}<span class="badge text-bg-info me-2">{{po.t_name}}</span> {% endfor %}</li>
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

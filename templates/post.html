@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title%}Post Detail page {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Post Detail Page</h1>
+    <br>
+    <blockquote>
+        <ul>
+            <li>Post title: {{post.title}}</li>
+            <li>Post content: {{post.content}}</li>
+            <li>Post Created at: {{post.created_at}}</li>
+            <li>Post user: {{post.blogger.first_name}} {{post.blogger.last_name}} </li>
+            
+        </ul>
+    </blockquote>
+    <h4>Tags:</h4>
+    <div class="container mb-5">
+    {% for t in post.tags %}
+        <span class="badge text-bg-info me-2">{{t.t_name}}</span>
+    {% endfor %}
+    </div>
+    <div class="container">
+        <div class="row  row-cols-auto">
+            <div class="col">
+    <a href="/posts/{{post.post_id}}/edit"><button class="btn btn-success">Edit Post</button></a>
+    </div>
+    <div class="col">
+    <form action="/posts/{{post.post_id}}/delete" method="post">
+        <input type="hidden" name="delete" >
+        <button class="btn btn-danger">Delete Post</button>
+        </form> 
+          
+    </div>
+</div>
+</div>
+        {% endblock %}

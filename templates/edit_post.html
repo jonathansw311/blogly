@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title%}Edit Post {% endblock %}
+{% block content %}
+<div class="container">    
+<h1>Edit Post</h1><br>
+    <form action="/posts/{{post.post_id}}/edit" method="POST">
+        <label for="Title">Title</label><br>
+        <input type="text" name="Title" value="{{post.title}}"> <br><br>
+        <label for="Content">Content</label><br>
+        <input type="text" name="Content" style="width:400px; height: 100px;" value="{{post.content}}"><br><br>
+        <h3>tags</h3>
+       <ul>
+       {% for tag in tags %}
+       <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" name="selected_options" id="selected_options" value={{tag.t_id}}
+        {% if tag.t_id in p %}checked{% endif %}>
+        <label class="form-check-label" for="flexSwitchCheckDefault">{{tag.t_name}}</label>
+      </div>
+        {% endfor %}
+        </ul>
+        
+        <button class="btn btn-success">Submit</button>
+        
+            
+        
+        </form>
+        </div>
+{% endblock%}

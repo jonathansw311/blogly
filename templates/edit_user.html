@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Edit {{user.first_name}}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title%}{{user.first_name}} {% endblock %}
+{% block content %}
+   
+<div class="container">
     <h1>Edit User</h1><br>
     <form action="/bloggers/{{user.id}}/edit" method="POST">
         <label for="first_name">First Name</label><br>
@@ -14,11 +11,10 @@
         <input type="text" name="last_name" value={{user.last_name}}><br><br>
         <label for="url">Blogger url</label><br>
         <input type="text" name="url" style="width:200px;" value={{user.image_url}}>  <br><br>
-        <button>Submit</button>     
+        <button class="btn btn-success">Submit</button>     
             
         
         </form>
 
-
-</body>
-</html>
+</div>
+{% endblock %}

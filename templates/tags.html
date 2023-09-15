@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title%}Display Tags{% endblock %}
+{% block content %}
+<div class="container">
+<h1>Tags</h1>
+<ul>
+    
+{% for t in tags %}
+<li><a href=/tags/{{t.t_id}}> {{t.t_name}}</a></li>
+{% endfor %}
+</ul>
+<a href="/tags/new"><button class="btn btn-success">Add Tag</button></a>
+</div>
+
+{% endblock %}

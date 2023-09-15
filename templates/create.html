@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create a user</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title%}Create a User{% endblock %}
+{% block content %}
+<div class="container">
     <h1>Create a User</h1>
     <form action="/bloggers/new" method="POST">
     <label for="first_name">First Name</label><br>
@@ -14,9 +10,9 @@
     <input type="text" name="last_name" placeholder="Enter last name"><br><br>
     <label for="url">Blogger URL</label><br>
     <input type="text" name="url" style="width:200px;" placeholder="Enter url image of this user">  <br><br>
-    <button>Submit</button>     
+    <button class="btn btn-success">Submit</button>     
         
     
     </form>
-</body>
-</html>
+    </div>
+{% endblock%}

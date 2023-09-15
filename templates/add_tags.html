@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title%}Add a tag{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Create a new tag</h1>
+    <form action="/tags/new" method="POST">
+    <label for="new_tag">New Tag</label><br>
+    <input type="text" name="new_tag" placeholder="Enter new tag"> <br><br>
+ <br><br>
+    <button class="btn btn-success">Submit</button>     
+        
+    
+    
+
+    <h3>Add Tag to Following Posts:</h3>
+    
+    {% for post in posts%}
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" name="selected_options" id="selected_options" value={{post.post_id}}>
+        <label class="form-check-label" for="flexSwitchCheckDefault">{{post.title}}</label>
+      </div>
+    {% endfor %}
+  </form> 
+  </div>
+{% endblock%}

@@ -1,4 +1,4 @@
-from unittest import TestCase
+import unittest 
 from app import app
 from models import db, Blog
 
@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_ECHO']= False
 db.drop.all()
 db.create_all()
 
-class BlogModelTestCase(TestCase):
+class BlogModelTestCase(unittest.TestCase):
     
     def setUp(self):
 
@@ -18,4 +18,4 @@ class BlogModelTestCase(TestCase):
         db.session.rollback()
 
     def test_greet(self):
-        blogger = Blog(first_name='Adam', last_name='Adams', img_url='http://')
+        blogger = Blog(first_name='Adam', last_name='Addams', img_url='http://')

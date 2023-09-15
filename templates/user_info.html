@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{user.first_name}}'s information</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title%}{{user.first_name}}'s information {% endblock %}
+{% block content %}
+   <div class="container">
     <h1>User: {{user.first_name}} {{user.last_name}}'s Detail Page</h1>
     <br>
     <blockquote>
@@ -15,11 +11,32 @@
             <li>Blogger url link: {{user.image_url}}</li>
         </ul>
     </blockquote>
-       <a href="/bloggers/{{user.id}}/edit"><button>Edit</button></a> <br><br>
-       
-       <form action="/bloggers/{{user.id}}/delete" method="post">
-        <input type="hidden" name="delete" >
-        <button >Delete User</button>
-    </form>
-</body>
-</html>
+    <h2>Posts</h2>
+    <ul>
+        {% for p in posts %}
+       <li><a href="/posts/{{p.post_id}}" >{{ p.title}}</a></li></li>
+        {% endfor %}
+    </ul>
+
+        <div class="container">
+            <div class="row row-cols-auto">
+                <div class="col">
+       <a href="/bloggers/{{user.id}}/edit"><button class="btn btn-primary">Edit User</button></a>
+       </div>
+       <div class="col">
+       <a href="/bloggers/{{user.id}}/post/new"><button class="btn btn-success">Add Post</button></a>
+       </div>
+       <div class="col">
+           <form action="/bloggers/{{user.id}}/delete" method="post">
+            <input type="hidden" name="delete" >
+            <button class="btn btn-danger">Delete User</button>
+            </form>
+        </div>
+</div>
+    </div>
+
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title%}Add Post {% endblock %}
+{% block content %}
+<div class="container">    
+<h1>Add Post for {{user.first_name}}</h1><br>
+    <form action="/bloggers/{{user.id}}/post/new" method="POST">
+        <label for="Title">Title</label><br>
+        <input type="text" name="Title" placeholder="Title"> <br><br>
+        <label for="Post Content">Post Content</label><br>
+        <input type="text" name="Post Content" placeholder="Post Content"><br><br>
+       <br><br>
+       <h3>tags</h3>
+       <ul>
+       {% for tag in tags %}
+       <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" name="selected_options" id="selected_options" value={{tag.t_id}}>
+        <label class="form-check-label" for="flexSwitchCheckDefault">{{tag.t_name}}</label>
+      </div>
+        {% endfor %}
+        </ul>
+        <button class="btn btn-success">Submit</button>     
+            
+        
+        </form>
+        </div>
+{% endblock %}
